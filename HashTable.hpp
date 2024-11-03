@@ -1,60 +1,69 @@
 /**
 * @file HashTable.hpp
- * @brief Header file for HashTable implementation using separate chaining
-* @authors Muzaffarbek Muratov,Rishika Bharodiya, Arpan Rakeshbhai Savani
- * @date 11/02/2024
+ * @brief Header file for HashTable implementation
+ * @author [Your Name]
+ * @date [Current Date]
  */
-#ifndef HASH_TABLE_HPP
-#define HASH_TABLE_HPP
+
+#ifndef _HASH_TABLE
+#define _HASH_TABLE
+#define _HASH_TABLE_SIZE 101
 
 #include <string>
+#include <vector>
+
+// Define a structure for a node in the hash table
+struct HashNode {
+ int key;
+ std::string fullName;
+ std::string address;
+ std::string city;
+ std::string state;
+ std::string zip;
+
+ HashNode* prev;
+ HashNode* next;
+
+ // Constructor
+ HashNode(int val, std::string myFullName, std::string myAddress,
+          std::string myCity, std::string myState, std::string myZip) :
+     key(val), fullName(myFullName), address(myAddress), city(myCity),
+     state(myState), zip(myZip), prev(nullptr), next(nullptr) {}
+};
 
 class HashTable {
 private:
-    // Hash table size (prime number for better distribution)
-    static const int TABLE_SIZE = 101;
+ HashNode** table;
+ int numberOfItems;
 
-    /**
-     * @brief Node structure for separate chaining
-     */
-    struct Node {
-        std::string key;
-        Node* next;
-        Node(const std::string& k) : key(k), next(nullptr) {}
-    };
-
-    Node** table;    // Array of pointers to nodes
-    int size;        // Current number of elements in table
-
-    /**
-     * @brief Hash function to calculate index for a given key
-     * @param key The key to hash
-     * @return The calculated hash index
-     */
-    int hashFunction(const std::string& key);
+ /**
+  * @brief Hash function to calculate index
+  * @param key The integer key to hash
+  * @return The calculated table index
+  */
+ int hashFunction(int key) const;
 
 public:
-    /**
-     * @brief Constructor - Initializes empty hash table
-     */
-    HashTable();
+ /**
+  * @brief Default constructor
+  */
+ HashTable();
 
-    /**
-     * @brief Destructor - Cleans up all allocated memory
-     */
-    ~HashTable();
+ /**
+  * @brief Destructor
+  */
+ ~HashTable();
 
-    // Disable copy constructor and assignment operator
-    HashTable(const HashTable&) = delete;
-    HashTable& operator=(const HashTable&) = delete;
-
-    bool add(std::string key);
-    bool remove(std::string key);
-    bool contains(std::string key);
-    void clear();
-    bool isEmpty();
-    int getSize();
-    std::string* getTable();
+ // Core methods
+ HashNode** getTable();
+ int getSize();
+ bool isEmpty();
+ int getNumberOfItems();
+ bool add(int key, HashNode* newNode);
+ bool remove(int key);
+ void clear();
+ HashNode* getItem(int key);
+ bool contains(int key);
 };
 
-#endif // HASH_TABLE_HPP
+#endif

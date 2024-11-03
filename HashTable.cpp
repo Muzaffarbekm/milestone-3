@@ -8,79 +8,63 @@
 #include "HashTable.hpp"
 #include <stdexcept>
 
-HashTable::HashTable() : size(0) {
-    try {
-        // Allocate array of Node pointers
-        table = new Node*[TABLE_SIZE];
-
-        // Initialize all table entries to nullptr
-        for (int i = 0; i < TABLE_SIZE; i++) {
-            table[i] = nullptr;
-        }
-    } catch (const std::bad_alloc& e) {
-        // Handle memory allocation failure
-        throw std::runtime_error("Failed to allocate memory for hash table");
+// Constructor
+HashTable::HashTable() : numberOfItems(0) {
+    table = new HashNode*[_HASH_TABLE_SIZE];
+    for (int i = 0; i < _HASH_TABLE_SIZE; i++) {
+        table[i] = nullptr;
     }
 }
 
+// Destructor
 HashTable::~HashTable() {
-    // Clean up all nodes
-    for (int i = 0; i < TABLE_SIZE; i++) {
-        Node* current = table[i];
-        while (current != nullptr) {
-            Node* next = current->next;
-            delete current;
-            current = next;
-        }
-    }
-
-    // Delete the array of pointers
+    clear();  // Clean up all nodes
     delete[] table;
-    table = nullptr;  // Good practice to nullptr deleted pointers
+    table = nullptr;
 }
 
-int HashTable::hashFunction(const std::string& key) {
-    unsigned long hash = 5381;  // Initial hash value (DJB2 algorithm)
-
-    // Calculate hash value
-    for (char c : key) {
-        hash = ((hash << 5) + hash) + c;  // hash * 33 + c
-    }
-
-    // Ensure hash is within table bounds
-    return hash % TABLE_SIZE;
+// Hash function
+int HashTable::hashFunction(int key) const {
+    return key % _HASH_TABLE_SIZE;
 }
 
-std::string* HashTable::getTable() {
-    // Required for testing - returns pointer to the table
-    return reinterpret_cast<std::string*>(table);
+// Required method for testing
+HashNode** HashTable::getTable() {
+    return table;
 }
 
-// Added these basic implementations for testing
-bool HashTable::isEmpty() {
-    return size == 0;
-}
-
+// Get the size of the hash table
 int HashTable::getSize() {
-    return size;
+    return _HASH_TABLE_SIZE;
 }
 
-// Add stubs for other required methods (they'll be implemented by team members)
-bool HashTable::add(std::string key) {
-    // This will be implemented by Person 2
-    return false;
+// Check if hash table is empty
+bool HashTable::isEmpty() {
+    return numberOfItems == 0;
 }
 
-bool HashTable::contains(std::string key) {
-    // This will be implemented by Person 2
-    return false;
+// Get number of items in the hash table
+int HashTable::getNumberOfItems() {
+    return numberOfItems;
 }
 
-bool HashTable::remove(std::string key) {
-    // This will be implemented by Person 3
-    return false;
+// Method stubs for other team members
+bool HashTable::add(int key, HashNode* newNode) {
+    return false;  // This will be implemented by Person 2
+}
+
+bool HashTable::remove(int key) {
+    return false;  // This will be implemented by Person 3
 }
 
 void HashTable::clear() {
     // This will be implemented by Person 3
+}
+
+HashNode* HashTable::getItem(int key) {
+    return nullptr;  // This will be implemented by Person 2
+}
+
+bool HashTable::contains(int key) {
+    return false;  // This will be implemented by Person 2
 }
