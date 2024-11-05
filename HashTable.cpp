@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <stdexcept>  // for error handling
-#include "src/HashTable.hpp"
+#include "HashTable.hpp"
 
 // Sets up an empty hash table with all nullptr entries
 HashTable::HashTable() : numberOfItems(0) {
