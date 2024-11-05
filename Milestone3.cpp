@@ -31,7 +31,7 @@
 #include <fstream>
 #include <string>
 
-#include "json.hpp"
+#include "../json.hpp"
 #include "HashTable.hpp"
 
 using json = nlohmann::json;
