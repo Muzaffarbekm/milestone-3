@@ -1,12 +1,7 @@
-/**
- * @file HashTable.cpp
- * @brief Implementation of HashTable methods
- * @authors Muzaffarbek Muratov,Rishika Bharodiya, Arpan Rakeshbhai Savani
- * @date 11/02/2024
- */
 
+#include <string>   // Include before HashTable.hpp
+#include <vector>   // Include before HashTable.hpp
 #include "HashTable.hpp"
-#include <stdexcept>
 
 // Constructor
 HashTable::HashTable() : numberOfItems(0) {
@@ -16,55 +11,46 @@ HashTable::HashTable() : numberOfItems(0) {
     }
 }
 
-// Destructor
-HashTable::~HashTable() {
-    clear();  // Clean up all nodes
-    delete[] table;
-    table = nullptr;
-}
-
-// Hash function
-int HashTable::hashFunction(int key) const {
-    return key % _HASH_TABLE_SIZE;
-}
-
-// Required method for testing
+// Returns pointer to the hash table array
 HashNode** HashTable::getTable() {
     return table;
 }
 
-// Get the size of the hash table
+// Returns size of hash table
 int HashTable::getSize() {
     return _HASH_TABLE_SIZE;
 }
 
-// Check if hash table is empty
+// Checks if hash table is empty
 bool HashTable::isEmpty() {
     return numberOfItems == 0;
 }
 
-// Get number of items in the hash table
+// Returns number of items in table
 int HashTable::getNumberOfItems() {
     return numberOfItems;
 }
 
-// Method stubs for other team members
+// Stub for add method (to be implemented by team member 2)
 bool HashTable::add(int key, HashNode* newNode) {
-    return false;  // This will be implemented by Person 2
+    return false;
 }
 
+// Stub for remove method (to be implemented by team member 3)
 bool HashTable::remove(int key) {
-    return false;  // This will be implemented by Person 3
+    return false;
 }
 
+// Stub for clear method (to be implemented by team member 3)
 void HashTable::clear() {
-    // This will be implemented by Person 3
 }
 
+// Stub for getItem method (to be implemented by team member 2)
 HashNode* HashTable::getItem(int key) {
-    return nullptr;  // This will be implemented by Person 2
+    return nullptr;
 }
 
+// Stub for contains method (to be implemented by team member 2)
 bool HashTable::contains(int key) {
-    return false;  // This will be implemented by Person 2
+    return false;
 }
