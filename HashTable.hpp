@@ -1,8 +1,8 @@
 /**
 * @file HashTable.hpp
  * @brief Header file for HashTable implementation
- * @author [Your Name]
- * @date [Current Date]
+ * @authors Muzaffarbek Muratov,Rishika Bharodiya, Arpan Rakeshbhai Savani
+ * @date 11/02/2024
  */
 
 #ifndef _HASH_TABLE
