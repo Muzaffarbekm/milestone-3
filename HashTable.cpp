@@ -1,13 +1,21 @@
+<<<<<<< HEAD
 /**
  * @file HashTable.cpp
  * @brief Implementation of HashTable methods
  * @authors Muzaffarbek Muratov, Rishika Bharodiya, Arpan Rakeshbhai Savani
  * @date 11/02/2024
  */
+=======
+>>>>>>> ebe58b78120467aff08b3b292a54423cac1e8789
 
+#include <string>   // Include before HashTable.hpp
+#include <vector>   // Include before HashTable.hpp
 #include "HashTable.hpp"
+<<<<<<< HEAD
 #include <stdexcept>
 #include <iostream> // For error output
+=======
+>>>>>>> ebe58b78120467aff08b3b292a54423cac1e8789
 
 // Constructor
 HashTable::HashTable() : numberOfItems(0) {
@@ -20,6 +28,7 @@ HashTable::HashTable() : numberOfItems(0) {
     }
 }
 
+<<<<<<< HEAD
 // Destructor
 HashTable::~HashTable() {
     clear();  // Clean up all nodes
@@ -33,10 +42,14 @@ int HashTable::hashFunction(int key) const {
 }
 
 // Required method for testing
+=======
+// Returns pointer to the hash table array
+>>>>>>> ebe58b78120467aff08b3b292a54423cac1e8789
 HashNode** HashTable::getTable() {
     return table;
 }
 
+<<<<<<< HEAD
 // Get the size of the hash table
 int HashTable::getSize() const {
     return HASH_TABLE_SIZE;
@@ -130,3 +143,43 @@ HashNode* HashTable::getItem(int key) {
     }
     return nullptr; // Key not found
 }
+=======
+// Returns size of hash table
+int HashTable::getSize() {
+    return _HASH_TABLE_SIZE;
+}
+
+// Checks if hash table is empty
+bool HashTable::isEmpty() {
+    return numberOfItems == 0;
+}
+
+// Returns number of items in table
+int HashTable::getNumberOfItems() {
+    return numberOfItems;
+}
+
+// Stub for add method (to be implemented by team member 2)
+bool HashTable::add(int key, HashNode* newNode) {
+    return false;
+}
+
+// Stub for remove method (to be implemented by team member 3)
+bool HashTable::remove(int key) {
+    return false;
+}
+
+// Stub for clear method (to be implemented by team member 3)
+void HashTable::clear() {
+}
+
+// Stub for getItem method (to be implemented by team member 2)
+HashNode* HashTable::getItem(int key) {
+    return nullptr;
+}
+
+// Stub for contains method (to be implemented by team member 2)
+bool HashTable::contains(int key) {
+    return false;
+}
+>>>>>>> ebe58b78120467aff08b3b292a54423cac1e8789
