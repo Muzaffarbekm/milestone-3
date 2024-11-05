@@ -14,6 +14,17 @@ using IntVector = std::vector<int>;
 
 // Define a structure for a node in the hash table
 struct HashNode {
+<<<<<<< HEAD
+	
+	int key;                                                           // Value stored in the node
+
+	std::string fullName;
+	std::string address;
+	std::string city;
+	std::string state;
+	std::string zip;
+
+=======
 
 	int key;                                                           // Value stored in the node
 
@@ -23,11 +34,16 @@ struct HashNode {
 	std::string state;
 	std::string zip;
 
+>>>>>>> ebe58b78120467aff08b3b292a54423cac1e8789
 	HashNode* prev;                                                     // Pointer to the previous node
 	HashNode* next;                                                     // Pointer to the next node
 
 	// Constructor to initialize a new node with values
+<<<<<<< HEAD
+	HashNode(int val, std::string myFullName, std::string myAddress, std::string myCity, std::string myState, std::string myZip) : 
+=======
 	HashNode(int val, std::string myFullName, std::string myAddress, std::string myCity, std::string myState, std::string myZip) :
+>>>>>>> ebe58b78120467aff08b3b292a54423cac1e8789
 		key(val), fullName(myFullName), address(myAddress), city(myCity), state(myState), zip(myZip), prev(nullptr), next(nullptr) {}
 };
 
@@ -41,6 +57,28 @@ private:
 public:
 	// Default constructor
 	HashTable();
+<<<<<<< HEAD
+
+	/**
+	*
+	* getTable
+	*
+	* Method to return the hash table.  This is a sample implementation of this method to be copied to your HashTable.cpp.  
+	* The method, getTable(), would generally not be in your implementation, but is needed here so that the contents can be 
+	* printed out from main() to verify the contents of your hashTable.
+	*
+	* param: none
+	*
+	* returns: the hash table array
+	*
+	HashNode** HashTable::getTable() {
+		return (table);
+	}
+	*/
+
+	// getTable
+	HashNode** getTable();
+=======
 
 	/**
 	*
@@ -88,5 +126,33 @@ public:
 }; // end HashTable
 
 
+>>>>>>> ebe58b78120467aff08b3b292a54423cac1e8789
 
-#endif
+	// getSize
+	int getSize();
+
+	// isEmpty
+	bool isEmpty();
+
+	// getNumberOfItems
+	int getNumberOfItems();
+
+	// add(searchKey, newItem)
+	bool add(int, HashNode*);
+
+	// remove(int)
+	bool remove(int);
+
+	// clear()
+	void clear();
+
+	// getItem(int)
+	HashNode* getItem(int);
+
+	// contains(int)
+	bool contains(int);
+}; // end HashTable
+
+
+
+#endif 
