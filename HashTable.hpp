@@ -1,51 +1,92 @@
+/**
+*
+* HashTable.hpp : This is the header file for HashTable.
+*
+* 09/23/24 - Created by ChatGPT
+* 10/17/24 - Modified by jhui
+*/
+
 #ifndef _HASH_TABLE
 #define _HASH_TABLE
+#define _HASH_TABLE_SIZE 101
 
-#include <string>
+using IntVector = std::vector<int>;
 
 // Define a structure for a node in the hash table
 struct HashNode {
-    int key;
-    std::string fullName;
-    std::string address;
-    std::string city;
-    std::string state;
-    std::string zip;
-    HashNode* prev; // Not used in this implementation
-    HashNode* next;
+	
+	int key;                                                           // Value stored in the node
 
-    // Constructor
-    HashNode(int val, const std::string& myFullName, const std::string& myAddress,
-             const std::string& myCity, const std::string& myState, const std::string& myZip) :
-        key(val), fullName(myFullName), address(myAddress), city(myCity),
-        state(myState), zip(myZip), prev(nullptr), next(nullptr) {}
+	std::string fullName;
+	std::string address;
+	std::string city;
+	std::string state;
+	std::string zip;
+
+	HashNode* prev;                                                     // Pointer to the previous node
+	HashNode* next;                                                     // Pointer to the next node
+
+	// Constructor to initialize a new node with values
+	HashNode(int val, std::string myFullName, std::string myAddress, std::string myCity, std::string myState, std::string myZip) : 
+		key(val), fullName(myFullName), address(myAddress), city(myCity), state(myState), zip(myZip), prev(nullptr), next(nullptr) {}
 };
 
+// Define a class for the hash table allowing bi-directional traversal
 class HashTable {
 private:
-    HashNode** table;        // Pointer to the hash table array
-    int numberOfItems;      // Number of items currently in the hash table
-
-    // Hash function to calculate index
-    int hashFunction(int key) const;
+	// HashNode* table[_HASH_TABLE_SIZE];
+	HashNode** table;
+	int numberOfItems;
 
 public:
-    static const int HASH_TABLE_SIZE = 101;  // Use static constant for table size
+	// Default constructor
+	HashTable();
 
-    // Constructor and Destructor
-    HashTable();
-    ~HashTable();
+	/**
+	*
+	* getTable
+	*
+	* Method to return the hash table.  This is a sample implementation of this method to be copied to your HashTable.cpp.  
+	* The method, getTable(), would generally not be in your implementation, but is needed here so that the contents can be 
+	* printed out from main() to verify the contents of your hashTable.
+	*
+	* param: none
+	*
+	* returns: the hash table array
+	*
+	HashNode** HashTable::getTable() {
+		return (table);
+	}
+	*/
 
-    // Core methods
-    HashNode** getTable();                       // Access the underlying table
-    int getSize() const;                         // Get the size of the hash table
-    bool isEmpty() const;                        // Check if the hash table is empty
-    int getNumberOfItems() const;                // Get the number of items in the hash table
-    bool add(int key, HashNode* newNode);       // Add a new node
-    bool remove(int key);                        // Remove a node by key
-    void clear();                                // Clear the hash table
-    HashNode* getItem(int key);                  // Get an item by key
-    bool contains(int key) const;                // Check if the key exists
-};
+	// getTable
+	HashNode** getTable();
 
-#endif
+	// getSize
+	int getSize();
+
+	// isEmpty
+	bool isEmpty();
+
+	// getNumberOfItems
+	int getNumberOfItems();
+
+	// add(searchKey, newItem)
+	bool add(int, HashNode*);
+
+	// remove(int)
+	bool remove(int);
+
+	// clear()
+	void clear();
+
+	// getItem(int)
+	HashNode* getItem(int);
+
+	// contains(int)
+	bool contains(int);
+}; // end HashTable
+
+
+
+#endif 
