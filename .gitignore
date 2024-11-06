@@ -1,0 +1,6 @@
+build/
+.vscode/
+.DS_Store
+*.o
+milestone3
+hash_table_test
